@@ -1,24 +1,734 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cute-resume-glow</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zining (Annie) Wang - NLP Researcher</title>
+    <meta name="description" content="Master's Student in Computer Science, University of British Columbia - Human-centered AI Research">
+    <meta name="author" content="Zining Wang">
+    
+    <style>
+        /* CSS Variables for a green theme centered on #32A48A */
+        :root {
+            --navy: hsl(220, 60%, 25%); /* deep navy */
+            --navy-600: hsl(220, 50%, 35%); /* lighter navy for hovers */
+            --background: #F2FBF8;              /* very light mint */
+            --foreground: #0B2D29;              /* deep teal for text */
+            --card: #FFFFFF;                    /* white cards on light bg */
+            --card-foreground: #0B2D29;
+            --primary: #32A48A;                 /* main green */
+            --primary-foreground: #FFFFFF;      /* readable on primary */
+            --secondary: var(--navy);
+            --secondary-foreground: #FFFFFF;
+            --muted: #E8F6F2;                   /* subtle mint */
+            --muted-foreground: #3A6B62;        /* muted teal text */
+            --accent: #32A48A;
+            --accent-foreground: #0B2D29;
+            --border: #D7EFE9;                  /* soft green border */
+            
+            --gradient-primary: linear-gradient(135deg, #32A48A, var(--navy));
+            --gradient-secondary: linear-gradient(180deg, #F2FBF8, #E8F6F2);
+            --shadow-soft: 0 4px 20px -4px rgba(50, 164, 138, 0.15);
+            --shadow-cute: 0 8px 30px -8px rgba(87, 194, 168, 0.25);
+        }
 
-    <meta property="og:title" content="cute-resume-glow" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background:
+                radial-gradient(900px 500px at 80% -10%, rgba(50,164,138,0.10), transparent 60%),
+                radial-gradient(700px 400px at 0% 100%, rgba(87,194,168,0.12), transparent 55%),
+                var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .bg-gradient-secondary {
+            background: var(--gradient-secondary);
+        }
+
+        .bg-gradient-primary {
+            background: var(--gradient-primary);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            letter-spacing: 0.2px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 6px 22px rgba(50, 164, 138, 0.18);
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 96px;
+            height: 6px;
+            margin: 12px auto 0;
+            border-radius: 999px;
+            background: var(--gradient-primary);
+            box-shadow: 0 10px 24px rgba(50, 164, 138, 0.35);
+        }
+
+        h3 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--foreground);
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+            padding: 5rem 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 12rem;
+            height: 12rem;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            padding: 4px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .profile-avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .profile-avatar-inner img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .profile-title {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-cute);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0.85;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(50, 164, 138, 0.35);
+            box-shadow:
+                0 14px 34px -10px rgba(50, 164, 138, 0.28),
+                var(--shadow-cute);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .badge-primary {
+          background: linear-gradient(135deg, #32A48A, var(--navy));
+          color: var(--primary-foreground);
+          box-shadow: 0 8px 22px -6px rgba(50,164,138,0.35);
+        }
+
+        .badge-secondary {
+          background: linear-gradient(135deg, var(--navy), var(--navy-600));
+          color: var(--secondary-foreground);
+          box-shadow: 0 8px 22px -6px rgba(23,45,80,0.25);
+        }
+
+        .badge-outline {
+          border: 1px solid var(--navy);
+          color: var(--navy);
+          background: transparent;
+        }
+
+        /* Paper link button */
+        .paper-link {
+          display: inline-block;
+          margin-top: 0.5rem;
+          padding: 0.35rem 0.7rem;
+          border-radius: 8px;
+          background: var(--secondary);
+          color: var(--secondary-foreground);
+          text-decoration: none;
+          font-size: 0.85rem;
+        }
+        .paper-link:hover {
+          background: var(--navy-600);
+          text-decoration: none;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+            opacity: 0.9;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--background);
+            animation: bounce-in 0.8s ease-out;
+            box-shadow: 0 0 0 3px #fff, 0 6px 18px rgba(50,164,138,0.35);
+            animation: bounce-in 0.8s ease-out, pulse-ring 2.4s ease-out infinite;
+        }
+
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+        }
+
+        /* Lists */
+        .highlight-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .highlight-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-list li::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+            background: var(--gradient-primary);
+            box-shadow: 0 0 0 3px rgba(50,164,138,0.10), 0 6px 18px rgba(50,164,138,0.35);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill-category h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(50,164,138,0.45); }
+            70% { box-shadow: 0 0 0 10px rgba(50,164,138,0); }
+            100% { box-shadow: 0 0 0 0 rgba(50,164,138,0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out;
+        }
+
+        .animate-bounce-in {
+            animation: bounce-in 0.8s ease-out;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 1.5rem;
+            background: var(--gradient-primary);
+            text-align: center;
+            color: white;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer p:last-child {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .timeline {
+                margin-left: 0;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .timeline-item {
+                padding-left: 0;
+            }
+            
+            .timeline-dot {
+                display: none;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Profile Section -->
+    <section class="profile-section bg-gradient-secondary">
+        <div class="container">
+            <div class="profile-avatar">
+                <div class="profile-avatar-inner">
+                    <img src="annie_wang.png" alt="Portrait of Zining (Annie) Wang" loading="lazy" />
+                </div>
+            </div>
+            
+            <h1>Zining (Annie) Wang</h1>
+            <p class="profile-title">Master's Student in Computer Science, University of British Columbia</p>
+            
+            <div class="card animate-fade-in-up">
+                <h4>Research Summary</h4>
+                <p>I develop human-centered AI systems that promote epistemic equity and cultural inclusion. 
+                My work bridges multilingual natural language processing and emotionally expressive, 
+                adaptive AI, with the goal of making AI not only accurate and transparent, but also a 
+                medium for empathy, cultural awareness, and human well-being.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Research</h2>
+            
+            <h3>Research Interests</h3>
+            <p style="font-size: 1.125rem; color: var(--muted-foreground); margin-bottom: 2rem; text-align: center;">
+                I study human-centered, socio-technical AI systems that support epistemic equity and human well-being. My work focuses on:
+            </p>
+            
+            <div class="card-grid">
+                <div class="card animate-fade-in-up">
+                    <h4>Multilingual AI</h4>
+                    <p>Investigating how multilingual models can surface underrepresented knowledge across languages, addressing the limitations of current systems that privilege dominant perspectives.</p>
+                </div>
+                
+                <div class="card animate-fade-in-up">
+                    <h4>Expressive & Adaptive AI</h4>
+                    <p>Designing emotionally expressive, adaptive AI systems that foster transparency and empathy, reframing AI not only as a computational tool but also as a medium for cultural inclusion and human connection.</p>
+                </div>
+            </div>
+
+            <h3>Publications</h3>
+            <div class="card animate-fade-in-up">
+                <h4>"Ain't Misbehavin': Using LLMs to Generate Expressive Robot Behavior"</h4>
+                <p style="color: var(--muted-foreground); margin-bottom: 0.5rem;">Zining Wang, Paul Reisert, Eric Nichols, Randy Gómez</p>
+                <p style="font-size: 0.875rem; color: var(--accent); font-style: italic;">ACM/IEEE International Conference on Human-Robot Interaction (HRI), 2024</p>
+                <a class="paper-link" href="https://dl.acm.org/doi/10.1145/3610978.3640562" target="_blank" rel="noopener">View on ACM Digital Library</a>
+            </div>
+
+            <div class="card animate-fade-in-up">
+                <h4>"WikiGap: Promoting Epistemic Equity by Surfacing Knowledge Gaps Between English Wikipedia and Other Language Editions"</h4>
+                <p style="color: var(--muted-foreground); margin-bottom: 0.5rem;">Zining Wang, Yuxuan Zhang, Dongwook Yoon, Nicholas Vincent, Farhan Samir, Vered Shwartz</p>
+                <p style="font-size: 0.875rem; color: var(--accent); font-style: italic;">Under review at ACM CSCW, 2026</p>
+                <a class="paper-link" href="https://arxiv.org/abs/2505.24195" target="_blank" rel="noopener">View on arXiv</a>
+            </div>
+
+            <div class="card animate-fade-in-up">
+                <h4>"Are Neural Representation Learning Methods a Viable Alternative to TMLE for Causal Estimation?"</h4>
+                <p style="color: var(--muted-foreground); margin-bottom: 0.5rem;">Mohammad Ehsanul Karima, Zining Wang</p>
+                <p style="font-size: 0.875rem; color: var(--accent); font-style: italic;">Under review at Journal of Statistical Computation and Simulation</p>
+                <a class="paper-link" href="#" target="_blank" rel="noopener">View on arXiv</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section bg-gradient-secondary">
+        <div class="container">
+            <h2>Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+                            <div>
+                                <h4>Graduate Student Researcher</h4>
+                                <p style="color: var(--primary); font-weight: 500;">UBC NLP Lab & Vector Institute of AI</p>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">Vancouver, BC</p>
+                            </div>
+                            <span class="badge badge-outline">Jan 2025 – Present</span>
+                        </div>
+                        
+                        <ul class="highlight-list">
+                            <li>Designing benchmarks to evaluate multilingual LLMs' ability to generalize facts across languages</li>
+                            <li>Applying causal inference to identify and measure cross-lingual knowledge gaps</li>
+                            <li>Developed WikiGap, a system that surfaces factual disparities across Wikipedia editions to promote cross-cultural awareness and transparency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+                            <div>
+                                <h4>Natural Language Processing Research Intern</h4>
+                                <p style="color: var(--primary); font-weight: 500;">Honda Research Institute Japan Co., Ltd.</p>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">Saitama, Japan</p>
+                            </div>
+                            <span class="badge badge-outline">May 2023 – Dec 2023</span>
+                        </div>
+                        
+                        <ul class="highlight-list">
+                            <li>Built large-scale datasets for emotion recognition in text</li>
+                            <li>Designed label schemes tailored for social robotics, improving alignment between human affect and robot behavior</li>
+                            <li>Investigated methods for integrating NLP models into emotionally expressive robotic interactions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+                            <div>
+                                <h4>Data Scientist Intern</h4>
+                                <p style="color: var(--primary); font-weight: 500;">Faculty of Medicine, University of British Columbia</p>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">Vancouver, BC</p>
+                            </div>
+                            <span class="badge badge-outline">Jan 2022 – Mar 2023</span>
+                        </div>
+                        
+                        <ul class="highlight-list">
+                            <li>Developed knowledge graphs to support clinical research data integration</li>
+                            <li>Automated survey workflows to improve efficiency in large-scale clinical studies</li>
+                            <li>Conducted data analysis to guide improvements in survey design and patient engagement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+                            <div>
+                                <h4>Database Developer</h4>
+                                <p style="color: var(--primary); font-weight: 500;">Digital Solutions, UBC Faculty of Medicine</p>
+                                <p style="color: var(--muted-foreground); font-size: 0.875rem;">Vancouver, BC</p>
+                            </div>
+                            <span class="badge badge-outline">Sep 2021 – Dec 2021</span>
+                        </div>
+                        
+                        <ul class="highlight-list">
+                            <li>Implemented automated data pipelines to facilitate metadata sharing across thousands of clinical studies</li>
+                            <li>Built interactive dashboards for research administration and resource allocation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Education Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Selected Projects</h2>
+            <div class="card-grid">
+                <div class="card animate-fade-in-up">
+                    <h4>LLM-based Chatbot for Stress Detection and Regulation</h4>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="badge badge-secondary">Applied NLP & Cognitive Behavioral Therapy</span>
+                        <span class="badge badge-outline">Sep–Dec 2023</span>
+                    </div>
+                    <ul class="highlight-list">
+                        <li>Developed an LLM-powered conversational agent for stress detection and adaptive mental health support</li>
+                        <li>Integrated principles from cognitive behavioral therapy to ground model responses in evidence-based techniques</li>
+                    </ul>
+                </div>
+
+                <div class="card animate-fade-in-up">
+                    <h4>Differentially Private Synthetic Data Generation for Time Series</h4>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="badge badge-secondary">Privacy-Preserving Machine Learning</span>
+                        <span class="badge badge-outline">Jan–Apr 2024</span>
+                    </div>
+                    <ul class="highlight-list">
+                        <li>Designed methods for generating realistic synthetic time-series data under differential privacy constraints</li>
+                        <li>Combined deep learning architectures with formal privacy guarantees to balance utility and protection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin: 5rem 0;">
+                <!-- Education -->
+                <div>
+                    <h3>Education</h3>
+                    <div class="card animate-bounce-in">
+                        <h4>University of British Columbia (UBC)</h4>
+                        <p style="color: var(--muted-foreground); margin-bottom: 0.5rem;">Vancouver, BC</p>
+                        <div style="margin: 1rem 0;">
+                            <p>• M.Sc. in Computer Science (Sep 2024 – Present)</p>
+                            <p>• B.Sc. in Computer Science & Statistics (Sep 2019 – May 2024)</p>
+                        </div>
+                        <span class="badge badge-primary">GPA: 4.0/4.0</span>
+                    </div>
+                </div>
+
+                <!-- Teaching -->
+                <div>
+                    <h3>Teaching & Mentorship</h3>
+                    
+                    <div class="card animate-fade-in-up">
+                        <h4>Undergraduate Teaching Assistant – Natural Language Processing</h4>
+                        <p style="color: var(--primary); font-weight: 500;">UBC</p>
+                        <span class="badge badge-outline">Sep 2023 – Dec 2023</span>
+                        <ul class="highlight-list" style="margin-top: 1rem;">
+                            <li>Supported 80+ students in implementing NLP algorithms for tasks such as classification, sequence tagging, and question answering</li>
+                            <li>Assisted with course assessment design and grading, providing feedback to reinforce student learning outcomes</li>
+                        </ul>
+                    </div>
+
+                    <div class="card animate-fade-in-up">
+                        <h4>Technical Director (Pro Bono)</h4>
+                        <p style="color: var(--primary); font-weight: 500;">Women in Data Science Association at UBC</p>
+                        <span class="badge badge-outline">May 2022 – Jan 2023</span>
+                        <ul class="highlight-list" style="margin-top: 1rem;">
+                            <li>Organized bi-weekly workshops on data science, applied mathematics, and visualization for 200+ participants</li>
+                            <li>Mentored 10+ students, supporting their academic growth and professional development in STEM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Technical Skills</h2>
+            <div class="card animate-bounce-in">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <div class="skill-tags">
+                            <span class="badge badge-secondary">Python</span>
+                            <span class="badge badge-secondary">MATLAB</span>
+                            <span class="badge badge-secondary">R</span>
+                            <span class="badge badge-secondary">C++</span>
+                            <span class="badge badge-secondary">Java</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Frameworks & Tools</h4>
+                        <div class="skill-tags">
+                            <span class="badge badge-secondary">TensorFlow</span>
+                            <span class="badge badge-secondary">PyTorch</span>
+                            <span class="badge badge-secondary">AWS</span>
+                            <span class="badge badge-secondary">MySQL</span>
+                            <span class="badge badge-secondary">REDCap</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Specialized Skills</h4>
+                        <div class="skill-tags">
+                            <span class="badge badge-secondary">Deep Learning</span>
+                            <span class="badge badge-secondary">Natural Language Processing</span>
+                            <span class="badge badge-secondary">Causal Inference</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="font-size: 1.125rem; margin-bottom: 1rem;">Let's connect and collaborate!</p>
+            <p>Interested in human-centered AI research? I'd love to hear from you.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-bounce-in, h2');
+            // Give section titles the same initial animation style
+            const headers = document.querySelectorAll('h2');
+            headers.forEach((el) => {
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(30px)';
+              el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            });
+            animatedElements.forEach((el) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
 </html>
