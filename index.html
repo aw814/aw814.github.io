@@ -328,6 +328,23 @@
             gap: 0.5rem;
         }
 
+        /* Icon Row Styles */
+        .profile-icons {
+          margin-top: 0.75rem;
+          display: flex;
+          justify-content: center;
+          gap: 1.25rem;
+        }
+        .profile-icons a {
+          font-size: 1.6rem;
+          color: var(--primary);
+          transition: color 0.25s ease, transform 0.2s ease;
+        }
+        .profile-icons a:hover {
+          color: var(--navy);
+          transform: scale(1.12);
+        }
+
         /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -420,7 +437,8 @@
                 padding: 3rem 1rem;
             }
         }
-    </style>
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Profile Section -->
@@ -434,13 +452,28 @@
             
             <h1>Zining (Annie) Wang</h1>
             <p class="profile-title">Master's Student in Computer Science, University of British Columbia</p>
+            <div class="profile-icons">
+              <a href="mailto:zining.wang@ubc.ca" title="Email">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <span class="sr-only">Email</span>
+              </a>
+              <a href="Annie_CV_2025.pdf" title="Download CV" target="_blank" rel="noopener">
+                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                <span class="sr-only">CV</span>
+              </a>
+              <a href="https://www.linkedin.com/in/annie-zining-wang/" title="LinkedIn" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </div>
             
             <div class="card animate-fade-in-up">
                 <h4>Research Summary</h4>
-                <p>I develop human-centered AI systems that promote epistemic equity and cultural inclusion. 
-                My work bridges multilingual natural language processing and emotionally expressive, 
-                adaptive AI, with the goal of making AI not only accurate and transparent, but also a 
-                medium for empathy, cultural awareness, and human well-being.</p>
+                <p>I study and develop human-centered, socio-technical AI systems that support epistemic equity and
+human well-being. I investigate how multilingual models can surface underrepresented knowledge across languages, addressing
+the limitations of current systems that privilege dominant perspectives and languages. At the same time, I explore how AI
+can engage people through emotionally expressive, adaptive interactions, re-framing AI not just as a computational
+tool, but as a medium for cultural inclusion, transparency and empathy.</p>
             </div>
         </div>
     </section>
@@ -450,12 +483,8 @@
         <div class="container">
             <h2>Research</h2>
             
-            <h3>Research Interests</h3>
-            <p style="font-size: 1.125rem; color: var(--muted-foreground); margin-bottom: 2rem; text-align: center;">
-                I study human-centered, socio-technical AI systems that support epistemic equity and human well-being. My work focuses on:
-            </p>
-            
-            <div class="card-grid">
+            <h3>My work focuses on:</h3>
+                        <div class="card-grid">
                 <div class="card animate-fade-in-up">
                     <h4>Multilingual AI</h4>
                     <p>Investigating how multilingual models can surface underrepresented knowledge across languages, addressing the limitations of current systems that privilege dominant perspectives.</p>
@@ -582,7 +611,7 @@
     <!-- Projects & Education Section -->
     <section class="section">
         <div class="container">
-            <h2>Selected Projects</h2>
+            <h2>Selected Side Projects</h2>
             <div class="card-grid">
                 <div class="card animate-fade-in-up">
                     <h4>LLM-based Chatbot for Stress Detection and Regulation</h4>
@@ -650,41 +679,6 @@
                 </div>
             </div>
 
-            <h2>Technical Skills</h2>
-            <div class="card animate-bounce-in">
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Programming</h4>
-                        <div class="skill-tags">
-                            <span class="badge badge-secondary">Python</span>
-                            <span class="badge badge-secondary">MATLAB</span>
-                            <span class="badge badge-secondary">R</span>
-                            <span class="badge badge-secondary">C++</span>
-                            <span class="badge badge-secondary">Java</span>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>Frameworks & Tools</h4>
-                        <div class="skill-tags">
-                            <span class="badge badge-secondary">TensorFlow</span>
-                            <span class="badge badge-secondary">PyTorch</span>
-                            <span class="badge badge-secondary">AWS</span>
-                            <span class="badge badge-secondary">MySQL</span>
-                            <span class="badge badge-secondary">REDCap</span>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>Specialized Skills</h4>
-                        <div class="skill-tags">
-                            <span class="badge badge-secondary">Deep Learning</span>
-                            <span class="badge badge-secondary">Natural Language Processing</span>
-                            <span class="badge badge-secondary">Causal Inference</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -692,7 +686,7 @@
     <footer class="footer">
         <div class="container">
             <p style="font-size: 1.125rem; margin-bottom: 1rem;">Let's connect and collaborate!</p>
-            <p>Interested in human-centered AI research? I'd love to hear from you.</p>
+            <p> </p>
         </div>
     </footer>
 
