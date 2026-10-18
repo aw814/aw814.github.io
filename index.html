@@ -7,451 +7,24 @@
     <meta name="description" content="Master's Student in Computer Science, University of British Columbia - Human-centered AI Research">
     <meta name="author" content="Zining Wang">
     
-    <style>
-        /* CSS Variables for a green theme centered on #32A48A */
-        :root {
-            --navy: hsl(220, 60%, 25%); /* deep navy */
-            --navy-600: hsl(220, 50%, 35%); /* lighter navy for hovers */
-            --background: #F2FBF8;              /* very light mint */
-            --foreground: #0B2D29;              /* deep teal for text */
-            --card: #FFFFFF;                    /* white cards on light bg */
-            --card-foreground: #0B2D29;
-            --primary: #32A48A;                 /* main green */
-            --primary-foreground: #FFFFFF;      /* readable on primary */
-            --secondary: var(--navy);
-            --secondary-foreground: #FFFFFF;
-            --muted: #E8F6F2;                   /* subtle mint */
-            --muted-foreground: #3A6B62;        /* muted teal text */
-            --accent: #32A48A;
-            --accent-foreground: #0B2D29;
-            --border: #D7EFE9;                  /* soft green border */
-            
-            --gradient-primary: linear-gradient(135deg, #32A48A, var(--navy));
-            --gradient-secondary: linear-gradient(180deg, #F2FBF8, #E8F6F2);
-            --shadow-soft: 0 4px 20px -4px rgba(50, 164, 138, 0.15);
-            --shadow-cute: 0 8px 30px -8px rgba(87, 194, 168, 0.25);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background:
-                radial-gradient(900px 500px at 80% -10%, rgba(50,164,138,0.10), transparent 60%),
-                radial-gradient(700px 400px at 0% 100%, rgba(87,194,168,0.12), transparent 55%),
-                var(--background);
-            color: var(--foreground);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .section {
-            padding: 5rem 1.5rem;
-        }
-
-        .bg-gradient-secondary {
-            background: var(--gradient-secondary);
-        }
-
-        .bg-gradient-primary {
-            background: var(--gradient-primary);
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-            letter-spacing: 0.2px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 6px 22px rgba(50, 164, 138, 0.18);
-        }
-
-        h2::after {
-            content: "";
-            display: block;
-            width: 96px;
-            height: 6px;
-            margin: 12px auto 0;
-            border-radius: 999px;
-            background: var(--gradient-primary);
-            box-shadow: 0 10px 24px rgba(50, 164, 138, 0.35);
-        }
-
-        h3 {
-            font-size: 1.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--foreground);
-        }
-
-        h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* Profile Section */
-        .profile-section {
-            text-align: center;
-            padding: 5rem 1.5rem;
-        }
-
-        .profile-avatar {
-            width: 12rem;
-            height: 12rem;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            padding: 4px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .profile-avatar-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: var(--muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-        .profile-avatar-inner img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .profile-title {
-            font-size: 1.25rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Cards */
-        .card {
-            background: rgba(255, 255, 255, 0.86);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow-cute);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: 0 0 auto 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            opacity: 0.85;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(50, 164, 138, 0.35);
-            box-shadow:
-                0 14px 34px -10px rgba(50, 164, 138, 0.28),
-                var(--shadow-cute);
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Badge */
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin: 0.25rem;
-        }
-
-        .badge-primary {
-          background: linear-gradient(135deg, #32A48A, var(--navy));
-          color: var(--primary-foreground);
-          box-shadow: 0 8px 22px -6px rgba(50,164,138,0.35);
-        }
-
-        .badge-secondary {
-          background: linear-gradient(135deg, var(--navy), var(--navy-600));
-          color: var(--secondary-foreground);
-          box-shadow: 0 8px 22px -6px rgba(23,45,80,0.25);
-        }
-
-        .badge-outline {
-          border: 1px solid var(--navy);
-          color: var(--navy);
-          background: transparent;
-        }
-
-        /* Paper link button */
-        .paper-link {
-          display: inline-block;
-          margin-top: 0.5rem;
-          padding: 0.35rem 0.7rem;
-          border-radius: 8px;
-          background: var(--secondary);
-          color: var(--secondary-foreground);
-          text-decoration: none;
-          font-size: 0.85rem;
-        }
-        .paper-link:hover {
-          background: var(--navy-600);
-          text-decoration: none;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            margin-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 2rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient-primary);
-            opacity: 0.9;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 5rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 1.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 4px solid var(--background);
-            animation: bounce-in 0.8s ease-out;
-            box-shadow: 0 0 0 3px #fff, 0 6px 18px rgba(50,164,138,0.35);
-            animation: bounce-in 0.8s ease-out, pulse-ring 2.4s ease-out infinite;
-        }
-
-        .timeline-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border);
-        }
-
-        /* Lists */
-        .highlight-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .highlight-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-list li::before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 0.75rem;
-            margin-top: 0.45rem;
-            flex-shrink: 0;
-            background: var(--gradient-primary);
-            box-shadow: 0 0 0 3px rgba(50,164,138,0.10), 0 6px 18px rgba(50,164,138,0.35);
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .skill-category h4 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        /* Icon Row Styles */
-        .profile-icons {
-          margin-top: 0.75rem;
-          display: flex;
-          justify-content: center;
-          gap: 1.25rem;
-        }
-        .profile-icons a {
-          font-size: 1.6rem;
-          color: var(--primary);
-          transition: color 0.25s ease, transform 0.2s ease;
-        }
-        .profile-icons a:hover {
-          color: var(--navy);
-          transform: scale(1.12);
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes fade-in-up {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce-in {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(50,164,138,0.45); }
-            70% { box-shadow: 0 0 0 10px rgba(50,164,138,0); }
-            100% { box-shadow: 0 0 0 0 rgba(50,164,138,0); }
-        }
-
-        .animate-fade-in-up {
-            animation: fade-in-up 0.6s ease-out;
-        }
-
-        .animate-bounce-in {
-            animation: bounce-in 0.8s ease-out;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 1.5rem;
-            background: var(--gradient-primary);
-            text-align: center;
-            color: white;
-        }
-
-        .footer p {
-            margin-bottom: 1rem;
-        }
-
-        .footer p:last-child {
-            opacity: 0.7;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .timeline {
-                margin-left: 0;
-            }
-            
-            .timeline::before {
-                display: none;
-            }
-            
-            .timeline-item {
-                padding-left: 0;
-            }
-            
-            .timeline-dot {
-                display: none;
-            }
-            
-            .section {
-                padding: 3rem 1rem;
-            }
-        }
-</style>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body id="top">
+    <a class="skip-link" href="#research">Skip to research</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header"><a class="wordmark" href="#top">AW<span class="seal">王</span></a><nav aria-label="Main navigation"><a href="#research">Research</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="mailto:zining.wang@ubc.ca">Contact ↗</a></nav><button class="motion-toggle" type="button" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button></header>
+    <main>
     <!-- Profile Section -->
     <section class="profile-section bg-gradient-secondary">
-        <div class="container">
+        <div class="ink-landscape" aria-hidden="true"><div class="moon"></div><svg class="mountains" viewBox="0 0 1440 650" preserveAspectRatio="none"><defs><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="3" seed="8"/><feDisplacementMap in="SourceGraphic" scale="36"/></filter><linearGradient id="wash" x2="0" y2="1"><stop stop-color="#73827d" stop-opacity=".4"/><stop offset="1" stop-color="#121918" stop-opacity="0"/></linearGradient></defs><g filter="url(#ink)"><path fill="url(#wash)" d="M0 430 Q130 400 220 300 L300 360 450 180 540 260 650 215 790 380 920 270 1030 330 1200 190 1440 370 V650 H0Z"/><path fill="#182220" opacity=".8" d="M0 550 160 400 240 450 390 320 520 480 650 380 800 520 1000 370 1120 455 1280 340 1440 500 V650 H0Z"/></g></svg><canvas id="ink-particles"></canvas><span class="landscape-note">以语言为桥 · 以人为本</span></div>
+        <div class="container hero-layout"><div class="hero-copy"><p class="eyebrow">NLP · HUMAN-CENTERED AI · UBC</p><h1>Zining <span>(Annie)</span><br>Wang<span class="name-dot">.</span></h1><p class="hero-statement">Across languages.<br>Closer to people.</p><p class="profile-title">Master’s Student in Computer Science<br>University of British Columbia</p><a class="hero-cta" href="#research">Explore my research <span>↘</span></a></div><div class="portrait-column">
             <div class="profile-avatar">
                 <div class="profile-avatar-inner">
-                    <img src="IMG_7997.JPG" alt="Portrait of Zining (Annie) Wang" loading="lazy" />
+                    <img src="IMG_7997.JPG" alt="Portrait of Zining (Annie) Wang" fetchpriority="high" />
                 </div>
             </div>
             
-            <h1>Zining (Annie) Wang</h1>
-            <p class="profile-title">Master's Student in Computer Science, University of British Columbia</p>
             <div class="profile-icons">
               <a href="mailto:zining.wang@ubc.ca" title="Email">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
@@ -467,8 +40,8 @@
               </a>
             </div>
             
-            <div class="card animate-fade-in-up">
-                <h4>Research Summary</h4>
+            </div><div class="card research-summary animate-fade-in-up">
+                <h4>Research statement <span>01 / ABOUT</span></h4>
                 <p>I study and develop human-centered, socio-technical AI systems that support epistemic equity and
 human well-being. I investigate how multilingual models can surface underrepresented knowledge across languages, addressing
 the limitations of current systems that privilege dominant perspectives and languages. At the same time, I explore how AI
@@ -479,11 +52,11 @@ tool, but as a medium for cultural inclusion, transparency and empathy.</p>
     </section>
 
     <!-- Research Section -->
-    <section class="section">
+    <section class="section" id="research">
         <div class="container">
             <h2>Research</h2>
             
-            <h3>My work focuses on:</h3>
+            <p class="section-intro">Language, knowledge, and the human experience.</p>
                         <div class="card-grid">
                 <div class="card animate-fade-in-up">
                     <h4>Multilingual AI</h4>
@@ -515,13 +88,13 @@ tool, but as a medium for cultural inclusion, transparency and empathy.</p>
                 <h4>"Are Neural Representation Learning Methods a Viable Alternative to TMLE for Causal Estimation?"</h4>
                 <p style="color: var(--muted-foreground); margin-bottom: 0.5rem;">Mohammad Ehsanul Karima, Zining Wang</p>
                 <p style="font-size: 0.875rem; color: var(--accent); font-style: italic;">accepted manuscript in Data Science in Science</p>
-                <a class="paper-link" href="#" target="_blank" rel="noopener">View on arXiv</a>
+                <span class="publication-note">Manuscript link forthcoming</span>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section class="section bg-gradient-secondary">
+    <section class="section bg-gradient-secondary" id="experience">
         <div class="container">
             <h2>Experience</h2>
             
@@ -609,7 +182,7 @@ tool, but as a medium for cultural inclusion, transparency and empathy.</p>
     </section>
 
     <!-- Projects & Education Section -->
-    <section class="section">
+    <section class="section" id="projects">
         <div class="container">
             <h2>Selected Side Projects</h2>
             <div class="card-grid">
@@ -682,47 +255,15 @@ tool, but as a medium for cultural inclusion, transparency and empathy.</p>
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p style="font-size: 1.125rem; margin-bottom: 1rem;">Let's connect and collaborate!</p>
-            <p> </p>
+            <p style="font-size: 1.125rem; margin-bottom: 1rem;">Let’s make meaningful connections.<br><a href="mailto:zining.wang@ubc.ca">zining.wang@ubc.ca ↗</a></p>
+            <p class="footer-bottom">Zining (Annie) Wang <span>Language · Intelligence · People</span><a href="#top">Back to top ↑</a></p>
         </div>
     </footer>
 
-    <script>
-        // Simple scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-bounce-in, h2');
-            // Give section titles the same initial animation style
-            const headers = document.querySelectorAll('h2');
-            headers.forEach((el) => {
-              el.style.opacity = '0';
-              el.style.transform = 'translateY(30px)';
-              el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            });
-            animatedElements.forEach((el) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-                observer.observe(el);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
