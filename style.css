@@ -28,3 +28,5 @@ body{background:var(--background)}body:before{opacity:.045}.site-header{backgrou
 .ink-heading{display:flex;align-items:flex-start;gap:16px}.ink-heading>span{min-width:0}.section-ink-icon{display:block;width:38px;height:38px;flex:0 0 38px;color:#52604c;overflow:visible;margin-top:6px}h3 .section-ink-icon{width:31px;height:31px;flex-basis:31px;margin-top:4px}h4 .section-ink-icon{width:28px;height:28px;flex-basis:28px;margin-top:2px}h4.ink-heading{gap:13px}.about-layout h2.ink-heading{gap:18px}@media(max-width:760px){.section-ink-icon{width:32px;height:32px;flex-basis:32px;margin-top:4px}h4 .section-ink-icon{width:25px;height:25px;flex-basis:25px}.ink-heading{gap:13px}}
 
 .section-label-with-icon{display:flex;align-items:center;gap:14px}.section-label-with-icon .section-ink-icon{width:30px;height:30px;flex-basis:30px;margin:0}
+/* Barely visible paper grain and scattered fibers, without affecting contrast. */
+body:before{opacity:.105;background-image:url('assets/paper-grain.svg');background-size:240px 240px;background-repeat:repeat;mix-blend-mode:multiply}
