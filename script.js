@@ -19,11 +19,11 @@
     ctx.clearRect(0, 0, width, height);
     const positions = points.map((p, i) => ({x: p.x * width + Math.sin(time + i) * 12 + pointer.x * p.r, y: p.y * height + Math.cos(time * .6 + i) * 14 + pointer.y * p.r}));
     positions.forEach((p, i) => {
-      ctx.fillStyle = i % 5 ? 'rgba(175,195,173,.35)' : 'rgba(207,130,112,.65)';
+      ctx.fillStyle = i % 5 ? 'rgba(65,95,72,.40)' : 'rgba(170,70,50,.55)';
       ctx.beginPath(); ctx.arc(p.x, p.y, points[i].r, 0, Math.PI * 2); ctx.fill();
       positions.slice(i + 1).forEach(q => {
         const d = Math.hypot(p.x - q.x, p.y - q.y);
-        if (d < 115) {ctx.strokeStyle = `rgba(170,190,170,${(1 - d / 115) * .12})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();}
+        if (d < 115) {ctx.strokeStyle = `rgba(65,95,72,${(1 - d / 115) * .12})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();}
       });
     });
   }
