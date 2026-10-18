@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 84" role="img" aria-labelledby="title"><title id="title">王 · 手刻朱文印</title>
+<defs><mask id="wear"><path fill="white" d="M0 0h80v84H0z"/><g fill="black"><path d="m9 21 5 1-2 3-4-1zm55-9 5-1-1 4-4 1zM7 60l6-2-1 5-5 1zm61-11 5 1-1 4-4-1zM25 73l4-2 2 4-5 1zM43 8l3-2 2 4-4 1z"/><circle cx="21" cy="34" r="1.1"/><circle cx="57" cy="60" r="1.3"/><circle cx="42" cy="45" r="1"/><path d="m17 19 3-1 1 2-3 1zm37 48 3-1v2l-2 1z"/></g></mask></defs>
+<g mask="url(#wear)" fill="none" stroke="#a83f32" stroke-linejoin="round" stroke-linecap="square"><path stroke-width="4.5" d="m9 9 29-2 33 2 1 29-2 36-32 1-30-2 1-31Z"/><path stroke-width="1.2" opacity=".65" d="m14 13 25-1 27 1 1 28-2 28-27 1-25-2 1-27Z"/>
+<path stroke-width="6" d="m23 24 15-1 18 1m-33 18 15-1 18 1M21 61l18 1 19-2M39 25l-1 18 1 17"/>
+<path stroke-width="2" d="m24 21-1 7m31-7 2 6M23 39l-1 6m33-6 1 6m-35 13-1 6m37-7 1 6"/></g></svg>
