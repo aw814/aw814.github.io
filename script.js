@@ -15,8 +15,8 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const photo = document.querySelector('.profile-avatar').getBoundingClientRect();
     const scene = canvas.parentElement.getBoundingClientRect();
-    const craneWidth = innerWidth <= 760 ? 100 : 140;
-    const craneHeight = craneWidth;
+    const craneWidth = innerWidth <= 760 ? 92 : 120;
+    const craneHeight = craneWidth * 2 / 3;
     canvas.parentElement.style.setProperty('--crane-land-x', `${photo.left - scene.left + photo.width * .74 - craneWidth * .45}px`);
     canvas.parentElement.style.setProperty('--crane-land-y', `${photo.top - scene.top - craneHeight * .94}px`);
     draw();
